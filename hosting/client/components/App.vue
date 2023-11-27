@@ -1,13 +1,7 @@
 <template>
   <el-container class="fullHeight">
     <el-container>
-      <el-aside width="50%">
-        <el-container class="fullHeight">
-          <el-main>
-            <NewCard />
-          </el-main>
-        </el-container>
-      </el-aside>
+
       <el-main class="main">
         <el-container class="fullHeight">
           <el-header style="height: auto;">
@@ -16,7 +10,7 @@
           <el-main>
             <el-row style="width: 100%">
               <el-col :span="12">
-                <h5 style="margin-top: 0; color: #606266; font-size: 14px">Deine Karten</h5>
+                <h5 style="margin-top: 0; color: #606266; font-size: 14px">Cartes de la Légende</h5>
               </el-col>
               <el-col :span="12" style="text-align: right;">
                 <el-button
@@ -25,7 +19,7 @@
                   icon="el-icon-circle-plus"
                   @click="handleNewCard"
                 >
-                  Neu
+                  Nouvelle carte
                 </el-button>
               </el-col>
             </el-row>
@@ -36,11 +30,19 @@
           </el-footer>
         </el-container>
       </el-main>
+
+      <el-aside width="70%">
+        <el-container class="fullHeight">
+          <el-main>
+            <NewCard />
+          </el-main>
+        </el-container>
+      </el-aside>
     </el-container>
-    <el-footer class="footer footer_border">
+    <!--<el-footer class="footer footer_border">
       <small>Andor/Die Legenden von Andor ist eine Marke des Autors Michael Menzel und der Franckh-Kosmos Verlags-GmbH &amp; Co. KG. Diese Webanwendungen und deren Inhalte sind keine offiziellen Andor-Produkte und sind weder vom Autor noch vom Verlag gesponsert, autorisiert oder unterstützt. Dies ist ein Open-Source-Projekt der Andor-Community.</small>
       <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
-    </el-footer>
+    </el-footer>-->
     <PDFView />
   </el-container>
 </template>

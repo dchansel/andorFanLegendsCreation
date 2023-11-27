@@ -20,6 +20,11 @@ body {
 
 @import './loading_spinner.css';
 
+.el-main {
+    flex: initial !important;
+    width:100%;
+}
+
 .loading {
     text-align: center;
     height: 100%;
