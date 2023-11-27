@@ -1,7 +1,7 @@
 <template>
   <div v-if="newCardOpenIndex">
     <el-form label-width="120px" @submit.native.prevent="close">
-      <el-form-item label="Name der Karte">
+      <el-form-item label="Nom de la Carte">
         <el-input
           v-model="cardData.name"
           aria-required=""
@@ -9,23 +9,23 @@
           @input="setSlug"
         />
       </el-form-item>
-      <el-form-item label="Typ der Karte">
+      <el-form-item label="Type de Carte">
         <el-radio-group v-model="cardData.type">
-          <el-radio label="letter">Buchstabe</el-radio>
-          <el-radio label="end">Spielende (meißt N)</el-radio>
-          <el-radio label="put">Anlegekarte</el-radio>
-          <el-radio label="custom">Sonstiges</el-radio>
+          <el-radio label="letter">Lettre</el-radio>
+          <el-radio label="end">Fin du jeu (N, en général)</el-radio>
+          <el-radio label="put">Cartes de la Piste</el-radio>
+          <el-radio label="custom">Autres</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="(cardData.type === 'custom')" label="Untertitel">
+      <el-form-item v-if="(cardData.type === 'custom')" label="Sous-titre">
         <el-input
           v-model="cardData.subname"
           required
-          placeholder="Karte wird aufgedeckt, wenn"
+          placeholder="La carte est révélée lorsque"
           :disabled="(cardData.type === 'letter')"
         />
       </el-form-item>
-      <el-form-item v-if="(cardData.type !== 'end')" label="Kartentext">
+      <el-form-item v-if="(cardData.type !== 'end')" label="Text de Carte">
         <el-input v-model="cardData.text" type="textarea" required rows="10" />
       </el-form-item>
       <div v-if="(cardData.type === 'end')">
@@ -37,7 +37,7 @@
         </el-form-item>
       </div>
       <small class="markdownText">
-        Text unterstützt
+        Le Texte supporte
         <a
           href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
           target="_blank"
@@ -47,10 +47,10 @@
       <el-form-item>
         <el-row style="width: 100%">
           <el-col :span="12">
-            <el-button type="info" @click="close">Schließen</el-button>
+            <el-button type="info" @click="close">Fermer</el-button>
           </el-col>
           <el-col :span="12" style="text-align: right;">
-            <el-button type="primary" native-type="submit">Speichern</el-button>
+            <el-button type="primary" native-type="submit">Enregistrer</el-button>
           </el-col>
         </el-row>
       </el-form-item>
