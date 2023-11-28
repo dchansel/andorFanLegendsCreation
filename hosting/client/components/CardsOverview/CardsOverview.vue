@@ -1,5 +1,5 @@
 <template>
-  <el-table :data="cards" empty-text="Noch keine Karten angelegt" style="width: 100%">
+  <el-table :data="cards" empty-text="Pas de cartes créées" style="width: 100%">
     <el-table-column prop="name" label="Name"></el-table-column>
     <el-table-column>
       <template slot-scope="scope">
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     handleDelete(id) {
-      if (window.confirm("Willst du diese Karte wirklich löschen?")) {
+      if (window.confirm("Voulais-vous vraiment supprimer cette carte ?")) {
         this.$store.commit("deleteCard", id);
       }
     },

@@ -60,6 +60,15 @@ export default new Vuex.Store({
   //strict: true,
   state: {
     name: 'Die dunklen weiten von Andor',
+    slug: null,
+    author: null,
+    abstract: null,
+    year:null,
+    players: null,
+    difficulty: [],
+    board: [],
+    boxExt: [],
+    download: null,
     type: 'single',
     series: null,
     number: null,
@@ -100,6 +109,31 @@ export default new Vuex.Store({
   mutations: {
     setName(state, newName) {
       state.name = newName;
+      state.slug = slugify(newName);
+    },
+    setAuthor(state, newAuthor) {
+      state.author = newAuthor;
+    },
+    setAbstract(state, newAbstract) {
+      state.abstract = newAbstract;
+    },
+    setYear(state, newYear) {
+      state.year = newYear;
+    },
+    setPlayers(state, newPlayers) {
+      state.players = newPlayers;
+    },
+    setDifficulty(state, newDifficulty) {
+      state.difficulty = newDifficulty;
+    },
+    setBoard(state, newBoard) {
+      state.board = newBoard;
+    },
+    setBoxExt(state, newBoxExt) {
+      state.boxExt = newBoxExt;
+    },
+    setDownload(state, newDownload) {
+      state.download = newDownload;
     },
     setType(state, newType) {
       state.type = newType;
@@ -125,6 +159,14 @@ export default new Vuex.Store({
     },
     loadState(state, newState) {
       state.name = newState.name;
+      state.slug = slugify(newState.name);
+      state.author = newState.author;
+      state.abstract = newState.abstract;
+      state.year = newState.year;
+      state.players = newState.players;
+      state.difficulty = newState.difficulty;
+      state.board = newState.board;
+      state.boxExt = newState.boxExt;
       state.type = newState.type || 'single';
       state.series = newState.series || null;
       state.number = newState.number || null;

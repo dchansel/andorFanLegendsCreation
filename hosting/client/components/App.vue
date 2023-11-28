@@ -5,25 +5,11 @@
       <el-main class="main">
         <el-container class="fullHeight">
           <el-header style="height: auto;">
-            <BasicInfos />
+            
           </el-header>
           <el-main>
-            <el-row style="width: 100%">
-              <el-col :span="12">
-                <h5 style="margin-top: 0; color: #606266; font-size: 14px">Cartes de la Légende</h5>
-              </el-col>
-              <el-col :span="12" style="text-align: right;">
-                <el-button
-                  type="info"
-                  size="mini"
-                  icon="el-icon-circle-plus"
-                  @click="handleNewCard"
-                >
-                  Nouvelle carte
-                </el-button>
-              </el-col>
-            </el-row>
-            <CardsOverview />
+            <BasicInfos />
+            
           </el-main>
           <el-footer class="footer">
             <PDFandSave />
@@ -50,7 +36,7 @@
 <script>
 import BasicInfos from "./BasicInfos/BasicInfos";
 import PDFandSave from "./PDFandSave/PDFandSave";
-import CardsOverview from "./CardsOverview/CardsOverview";
+//import CardsOverview from "./CardsOverview/CardsOverview";
 import NewCard from "./NewCard/NewCard.vue";
 import PDFView from "./PDFView/PDFView.vue";
 
@@ -58,14 +44,14 @@ import PDFView from "./PDFView/PDFView.vue";
 //const PDFView = () => import("./PDFView/PDFView.vue");
 
 export default {
-  components: { BasicInfos, PDFandSave, CardsOverview, NewCard, PDFView },
+  components: { BasicInfos, PDFandSave, NewCard, PDFView },
   methods: {
-    openGoogleForms() {
+    /*openGoogleForms() {
       window.open("https://goo.gl/forms/834NVBDKokUASJeq1");
-    },
-    handleNewCard() {
+    },*/
+    /*handleNewCard() {
       this.$store.commit("addCard");
-    }
+    }*/
   }
 };
 </script>

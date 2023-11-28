@@ -23,7 +23,7 @@ export default {
       const blob = new Blob([JSON.stringify(this.$store.state)], {
         type: "application/json"
       });
-      saveAs(blob, "andor.json");
+      saveAs(blob, this.$store.state.slug);
     },
     loadState(e) {
       try {
