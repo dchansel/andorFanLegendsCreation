@@ -1,5 +1,5 @@
 {
-  "name": "andor-extended",
+  "name": "andorFanLegendsCreation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "andor-legendenkarte": "file:./../../andor-legendenkarte"
   },
   "dependencies": {
-    "andor-legendenkarte": "github:mdunisch/andor-legendenkarte",
+    "andor-legendenkarte": "github:dchansel/andorLegendCard",
     "element-ui": "^2.12.0",
     "file-saver": "^2.0.2",
     "nanoid": "^2.1.4",
@@ -35,12 +35,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdunisch/andor-extended.git"
+    "url": "git+https://github.com/dchansel/andorFanLegendsCreation"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mdunisch/andor-extended/issues"
+    "url": "https://github.com/dchansel/andorFanLegendsCreation/issues"
   },
-  "homepage": "https://github.com/mdunisch/andor-extended#readme"
+  "homepage": "https://github.com/dchansel/andorFanLegendsCreation#readme"
 }
