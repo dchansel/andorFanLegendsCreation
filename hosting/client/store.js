@@ -34,6 +34,7 @@ function slugify(string) {
  */
 const sorter = (card1, card2) => {
 
+  //console.log(card1.name + ' - ' + card2.name);
   // treat end as letter
   let newCard1 = { ...card1 };
   let newCard2 = { ...card2 };
@@ -47,14 +48,42 @@ const sorter = (card1, card2) => {
   }
 
   // If not the same type order by type
+  /*if (newCard2.type !== newCard1.type) {
+    if( newCard2.type === 'instruction') {
+      console.log("instruction");
+      return 1;
+    } else if (newCard2.type === 'letter') {
+      console.log("letter");
+      return 1;
+    } else {
+      console.log("negative");
+      -1
+    }
+    //return (newCard2.type === 'letter') ? 1 : -1;
+  }*/
   if (newCard2.type !== newCard1.type) {
     return (newCard2.type === 'letter') ? 1 : -1;
   }
-
   // Sort by name
   return newCard1.name.localeCompare(newCard2.name);
 };
 
+const sorterInstruction = (card1, card2) => {
+  let newCard1 = { ...card1 };
+  let newCard2 = { ...card2 };
+
+  if (newCard1.type === 'end') {
+    newCard1.type = 'letter';
+  }
+
+  if (newCard2.type === 'end') {
+    newCard2.type = 'letter';
+  }
+
+  if (newCard2.type !== newCard1.type) {
+    return (newCard2.type === 'instruction') ? 1 : -1;
+  }
+}
 
 export default new Vuex.Store({
   //strict: true,
@@ -215,7 +244,8 @@ export default new Vuex.Store({
   },
   getters: {
     getCards: state => {
-      return [...state.cards].sort(sorter);
+      return [...state.cards].sort(sorter).sort(sorterInstruction);//.sort(sorterInstruction)
+      //return [...state.cards].sortBy(state.cards, "type", "name")
     }
   }
 });

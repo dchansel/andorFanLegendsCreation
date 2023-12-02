@@ -14,10 +14,11 @@
           <el-radio label="letter">Lettre</el-radio>
           <el-radio label="end">Fin du jeu (N, en général)</el-radio>
           <el-radio label="put">Cartes de la Piste</el-radio>
+          <el-radio label="instruction">Instructions</el-radio>
           <el-radio label="custom">Autres</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item v-if="(cardData.type === 'custom')" label="Sous-titre">
+      <el-form-item v-if="(cardData.type === 'custom' || cardData.type === 'instruction')" label="Sous-titre">
         <el-input
           v-model="cardData.subname"
           required
@@ -29,10 +30,10 @@
         <el-input v-model="cardData.text" type="textarea" required rows="10" />
       </el-form-item>
       <div v-if="(cardData.type === 'end')">
-        <el-form-item label="Erfolgstext">
+        <el-form-item label="Texte de succès">
           <el-input v-model="cardData.success" type="textarea" required rows="7" />
         </el-form-item>
-        <el-form-item label="Misserfolg">
+        <el-form-item label="Echec">
           <el-input v-model="cardData.failure" type="textarea" required rows="7" />
         </el-form-item>
       </div>
