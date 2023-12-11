@@ -44,24 +44,27 @@
                 <el-form-item label="Difficulté">
                     <br/> 
                     <el-checkbox-group v-model="difficulty">
-                        <el-checkbox-button  v-for="difficultyOpt in difficultiesOpt" :label="difficultyOpt.key" :key="difficultyOpt.key">{{difficultyOpt.name}}</el-checkbox>
+                        <el-checkbox-button  v-for="difficultyOpt in difficultiesOpt" :label="difficultyOpt.key" :key="difficultyOpt.key">{{difficultyOpt.name}}</el-checkbox-button>
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="Plateau">
                     <br/> 
                     <el-checkbox-group v-model="board" size="mini">
-                        <el-checkbox-button  v-for="boardOpt in boardOpts" :label="boardOpt.key" :key="boardOpt.key">{{boardOpt.name}}</el-checkbox>
+                        <el-checkbox-button  v-for="boardOpt in boardOpts" :label="boardOpt.key" :key="boardOpt.key">{{boardOpt.name}}</el-checkbox-button>
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="Nécessite">
                     <br/> 
                     <el-checkbox-group v-model="boxExt" size="mini" >
-                        <el-checkbox-button  v-for="boxExtOpt in boxExtOpts" :label="boxExtOpt.key" :key="boxExt.key">{{boxExtOpt.name}}</el-checkbox>
+                        <el-checkbox-button  v-for="boxExtOpt in boxExtOpts" :label="boxExtOpt.key" :key="boxExtOpt.key">{{boxExtOpt.name}}</el-checkbox-button>
                     </el-checkbox-group>
                 </el-form-item>
             </el-tab-pane>
             <el-tab-pane label="Download" name="Download">
-                <el-form-item label="Download URL" style="font-weight: bold">
+                <el-form-item label="In-App Additionnal Pdf" style="font-weight: bold">
+                    <el-input v-model="additionaldownload" placeholder="In-App Additionnal Pdf" />
+                </el-form-item>
+                <el-form-item label="Legend Download URL" style="font-weight: bold">
                     <el-input v-model="download" placeholder="Download URL" />
                 </el-form-item>
             </el-tab-pane>
@@ -162,6 +165,14 @@ export default {
             },
             set(value) {
                 this.$store.commit("setBoxExt", value);
+            }
+        },
+        additionaldownload: {
+            get() {
+                return this.$store.state.additionaldownload;
+            },
+            set(value) {
+                this.$store.commit("setAdditionalDownload", value);
             }
         },
         download: {

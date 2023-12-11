@@ -25,7 +25,6 @@ function slugify(string) {
     .replace(/-+$/, '') // Trim - from end of text */
 }
 
-
 /**
  * 
  * @param {object} card1 
@@ -97,6 +96,7 @@ export default new Vuex.Store({
     difficulty: [],
     board: [],
     boxExt: [],
+    additionaldownload: null,
     download: null,
     type: 'single',
     series: null,
@@ -161,6 +161,9 @@ export default new Vuex.Store({
     setBoxExt(state, newBoxExt) {
       state.boxExt = newBoxExt;
     },
+    setAdditionalDownload(state, newAdditionaldownload) {
+      state.additionaldownload = newAdditionaldownload;
+    },
     setDownload(state, newDownload) {
       state.download = newDownload;
     },
@@ -187,20 +190,30 @@ export default new Vuex.Store({
       state.cards.find(i => i.id === state.newCardOpenIndex).slug = slug;
     },
     loadState(state, newState) {
+      console.log(state);
+      console.log(newState);
+      console.log("Type Board = " + typeof newState.board);
+      console.log("BOARD = " + newState.board)
+      console.log("difficulty = " + typeof newState.difficulty)
+      
       state.name = newState.name;
       state.slug = slugify(newState.name);
       state.author = newState.author;
       state.abstract = newState.abstract;
       state.year = newState.year;
       state.players = newState.players;
-      state.difficulty = newState.difficulty;
-      state.board = newState.board;
-      state.boxExt = newState.boxExt;
+      state.difficulty = typeof newState.difficulty == 'object' ? newState.difficulty : [];
+      state.board = typeof newState.board == 'object' ? newState.board : [];
+      state.boxExt = typeof newState.boxExt == 'object' ? newState.boxExt : [];
+      state.additionaldownload = newState.additionaldownload || null;
+      state.download = newState.download || null;
       state.type = newState.type || 'single';
       state.series = newState.series || null;
       state.number = newState.number || null;
-      state.newCardOpenIndex = newState.newCardOpenIndex;
+      state.newCardOpenIndex = newState.newCardOpenIndex || 1;
       state.cards = newState.cards;
+
+      console.log("Board = " + state.difficulty);
 
       // If slugs a missing
       if (state.cards.some(i => typeof i.slug === "undefined")) {
@@ -208,6 +221,13 @@ export default new Vuex.Store({
           card.slug = slugify(card.name);
         });
       }
+      // If id a missing
+      if (state.cards.some(i => typeof i.id === "undefined")) {
+        state.cards.forEach(card => {
+          card.id = Nanoid();
+        });
+      }
+
     },
     deleteCard(state, cardId) {
 
