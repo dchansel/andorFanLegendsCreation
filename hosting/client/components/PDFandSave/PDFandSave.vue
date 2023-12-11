@@ -33,22 +33,26 @@ export default {
         reader.onload = e => {
           const newState = JSON.parse(e.target.result);
           if (!this.validateJson(newState)) {
-            return window.alert("Erreur lors du chargement du fichier");
+            return window.alert("Erreur lors du chargement du fichier : Not valid Json");
           }
           this.$store.commit("loadState", newState);
         };
         // Start reading file
         reader.readAsText(file);
       } catch (e) {
-        window.alert("Erreur lors du chargement du fichier");
+        window.alert("Erreur lors du chargement du fichier (1520)");
       }
     },
     // Simple validation of Loading JSON
     validateJson(object) {
+      console.log("Name " + object.name);
+      console.log("newCardOpenIndex " + object.newCardOpenIndex);
+      console.log("object.showPdf" + object.showPdf);
+      console.log("Cards Array " + Array.isArray(object.cards));
       if (
         !object.name ||
-        typeof object.newCardOpenIndex === 'undefined' ||
-        typeof object.showPdf === 'undefined' ||
+        //typeof object.newCardOpenIndex === 'undefined' ||
+        //typeof object.showPdf === 'undefined' ||
         !Array.isArray(object.cards)
       ) {
         return false;

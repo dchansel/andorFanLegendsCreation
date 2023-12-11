@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     handleDelete(id) {
-      if (window.confirm("Voulais-vous vraiment supprimer cette carte ?")) {
+      if (window.confirm("Voulez-vous vraiment supprimer cette carte ?")) {
         this.$store.commit("deleteCard", id);
       }
     },
