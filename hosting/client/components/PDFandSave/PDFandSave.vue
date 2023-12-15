@@ -45,10 +45,10 @@ export default {
     },
     // Simple validation of Loading JSON
     validateJson(object) {
-      console.log("Name " + object.name);
+      /*console.log("Name " + object.name);
       console.log("newCardOpenIndex " + object.newCardOpenIndex);
       console.log("object.showPdf" + object.showPdf);
-      console.log("Cards Array " + Array.isArray(object.cards));
+      console.log("Cards Array " + Array.isArray(object.cards));*/
       if (
         !object.name ||
         //typeof object.newCardOpenIndex === 'undefined' ||

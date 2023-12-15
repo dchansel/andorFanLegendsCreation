@@ -1,14 +1,34 @@
 <template>
     <el-form>
-        <el-form-item label="Nom de la Légende" style="font-weight: bold">
-            <el-input v-model="name" placeholder="Nom de la Légende" />
-        </el-form-item>
         <el-form-item label="Type de légende" style="font-weight: bold">
             <el-radio-group v-model="type">
                 <el-radio label="single">Unique</el-radio>
                 <el-radio label="series">Plusieurs Chapitres</el-radio>
             </el-radio-group>
         </el-form-item>
+        <el-row :gutter="20">
+            <el-col :span="6"><div class="grid-content bg-purple">
+                <el-form-item v-if="(type === 'series')" label="N°">
+                    <el-input
+                        v-model="number"
+                        placeholder="N°"
+                        :maxlength="1"
+                        />
+                </el-form-item>
+            </div></el-col>
+            <el-col :span="18"><div class="grid-content bg-purple">
+                <el-form-item v-if="(type === 'series')" label="Nom de la Saga">
+                    <el-input
+                        v-model="series"
+                        placeholder="Nom de la Saga"
+                        />
+                </el-form-item>
+            </div></el-col>
+        </el-row>
+        <el-form-item label="Nom de la Légende" style="font-weight: bold">
+            <el-input v-model="name" placeholder="Nom de la Légende" />
+        </el-form-item>
+        
         <el-tabs v-model="activeName">
             <el-tab-pane label="Cartes" name="cartes">  
                 <el-row style="width: 100%">
@@ -64,28 +84,14 @@
                 </el-form-item>
             </el-tab-pane>
             <el-tab-pane label="Download" name="Download">
-                <el-form-item label="In-App Additionnal Pdf" style="font-weight: bold">
-                    <el-input v-model="additionaldownload" placeholder="In-App Additionnal Pdf" />
-                </el-form-item>
                 <el-form-item label="Legend Download URL" style="font-weight: bold">
                     <el-input v-model="download" placeholder="Download URL" />
                 </el-form-item>
+                <el-form-item label="In-App Additionnal Pdf" style="font-weight: bold">
+                    <el-input v-model="additionaldownload" placeholder="In-App Additionnal Pdf" />
+                </el-form-item>
             </el-tab-pane>
-        </el-tabs>     
-        
-    <el-form-item v-if="(type === 'series')" label="Nom de la Saga">
-          <el-input
-            v-model="series"
-            placeholder="Nom de la Saga"
-            />
-    </el-form-item>
-    <el-form-item v-if="(type === 'series')" label="Numéro de Légende">
-          <el-input
-            v-model="number"
-            placeholder="Numéro de la légende dans la série"
-            :maxlength="1"
-            />
-    </el-form-item>
+        </el-tabs>
   </el-form>
 </template>
 <script>
@@ -152,6 +158,14 @@ export default {
             },
             set(value) {
                 this.$store.commit("setDifficulty", value);
+            }
+        },
+        officialBonus: {
+            get() {
+                return this.$store.state.officialBonus;
+            },
+            set(value) {
+                this.$store.commit("setOfficialBonus", value);
             }
         },
         board: {

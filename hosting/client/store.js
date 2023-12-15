@@ -25,6 +25,21 @@ function slugify(string) {
     .replace(/-+$/, '') // Trim - from end of text */
 }
 
+function setLegendSlug(state) {
+  //let slugirise = state.name;
+//console.log(state.series);
+  if (state.series != null  && state.number != null) {
+    //console.log(state.series + '-'+ state.number + '-' + state.name);
+    //console.log("HERE");
+    return slugify(state.series + '-' + state.number + '-' + state.name);
+    //state.slug = 
+    //let slugirise = state.series + '-' + state.number + '-' + state.name;
+  } else {
+    return slugify(state.name);
+    //let slugirise = state.name;
+  }
+}
+
 /**
  * 
  * @param {object} card1 
@@ -139,7 +154,8 @@ export default new Vuex.Store({
   mutations: {
     setName(state, newName) {
       state.name = newName;
-      state.slug = slugify(newName);
+      state.slug = setLegendSlug(state);
+      //state.slug = slugify(newName);
     },
     setAuthor(state, newAuthor) {
       state.author = newAuthor;
@@ -176,9 +192,14 @@ export default new Vuex.Store({
     },
     setSeries(state, newName) {
       state.series = newName;
+      state.slug = setLegendSlug(state);
+      /*if (state.series != '') {
+        console.log(state.series + '-'+ state.number + '-' + state.name)
+      }*/
     },
     setNumber(state, newNumber) {
       state.number = newNumber;
+      state.slug = setLegendSlug(state);
     },
     setSlug(state, newName) {
 
@@ -194,8 +215,8 @@ export default new Vuex.Store({
       state.cards.find(i => i.id === state.newCardOpenIndex).slug = slug;
     },
     loadState(state, newState) {
-      console.log(state);
-      console.log(newState);
+      //console.log(state);
+      //console.log(newState);
       //console.log("Type Board = " + typeof newState.board);
       //console.log("BOARD = " + newState.board)
       //console.log("difficulty = " + typeof newState.difficulty)
