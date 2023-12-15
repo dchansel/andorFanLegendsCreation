@@ -94,6 +94,7 @@ export default new Vuex.Store({
     year:null,
     players: null,
     difficulty: [],
+    officialBonus: false,
     board: [],
     boxExt: [],
     additionaldownload: null,
@@ -155,6 +156,9 @@ export default new Vuex.Store({
     setDifficulty(state, newDifficulty) {
       state.difficulty = newDifficulty;
     },
+    setOfficialBonus(state, newOfficialBonus) {
+      state.officialBonus = newOfficialBonus;
+    },
     setBoard(state, newBoard) {
       state.board = newBoard;
     },
@@ -192,9 +196,9 @@ export default new Vuex.Store({
     loadState(state, newState) {
       console.log(state);
       console.log(newState);
-      console.log("Type Board = " + typeof newState.board);
-      console.log("BOARD = " + newState.board)
-      console.log("difficulty = " + typeof newState.difficulty)
+      //console.log("Type Board = " + typeof newState.board);
+      //console.log("BOARD = " + newState.board)
+      //console.log("difficulty = " + typeof newState.difficulty)
       
       state.name = newState.name;
       state.slug = slugify(newState.name);
@@ -203,6 +207,7 @@ export default new Vuex.Store({
       state.year = newState.year;
       state.players = newState.players;
       state.difficulty = typeof newState.difficulty == 'object' ? newState.difficulty : [];
+      state.officialBonus = newState.officialBonus;
       state.board = typeof newState.board == 'object' ? newState.board : [];
       state.boxExt = typeof newState.boxExt == 'object' ? newState.boxExt : [];
       state.additionaldownload = newState.additionaldownload || null;
@@ -213,7 +218,7 @@ export default new Vuex.Store({
       state.newCardOpenIndex = newState.newCardOpenIndex || 1;
       state.cards = newState.cards;
 
-      console.log("Board = " + state.difficulty);
+      //console.log("Board = " + state.difficulty);
 
       // If slugs a missing
       if (state.cards.some(i => typeof i.slug === "undefined")) {

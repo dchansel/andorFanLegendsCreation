@@ -47,6 +47,9 @@
                         <el-checkbox-button  v-for="difficultyOpt in difficultiesOpt" :label="difficultyOpt.key" :key="difficultyOpt.key">{{difficultyOpt.name}}</el-checkbox-button>
                     </el-checkbox-group>
                 </el-form-item>
+                <el-form-item label="Legendes Bonus Officielle">
+                    <el-checkbox v-model="officialBonus">Oui</el-checkbox>
+                </el-form-item>
                 <el-form-item label="Plateau">
                     <br/> 
                     <el-checkbox-group v-model="board" size="mini">
