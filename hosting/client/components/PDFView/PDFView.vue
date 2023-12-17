@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import CardPreview from "andor-legendenkarte";
+import CardPreview from "andor-legendcard";
 
 export default {
   components: { CardPreview },
