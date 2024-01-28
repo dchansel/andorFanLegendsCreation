@@ -123,7 +123,7 @@ export default new Vuex.Store({
         type: 'letter',
         name: 'A1',
         slug: 'a1',
-        text: 'Führt zuerst die Anweisungen auf der **Checkliste** aus.\n\nAnschließend legt ihr zusätzlich folgenden Material neben dem Spielplan bereit:\n* Legt die Hexte, die 15 Kreaturplättchen, den Gegenstand Gibt und 3 schwarze Würfel bereit.\n* Legen **Sternchen auf D, H und N** der Legendenleiste.\n\n*In Andor trug sich eine Geschichte zu, die Ging so:....*\n\nStellt alle Helden auf das Feld **57.**\n\n***\n**Aufgabe:**\nDie Helden müssen die Burg verteidigen und den **die Dunkelheit** daran hindern, alle Bauern zu verschlingen bevor der Erzähler den Buchstaben **Feld H** erreicht hat.\n***',
+        text: 'Führt zuerst die Anweisungen auf der **Checkliste** aus.\n\nAnschließend legt ihr zusätzlich folgenden Material neben dem Spielplan bereit:\n* Legt die Hexte, die 15 Kreaturplättchen, den Gegenstand Gibt und 3 schwarze Würfel bereit.\n* Legen **Sternchen auf D, H und N** der Legendenleiste.\n\n*In Andor trug sich eine Geschichte zu, die Ging so:....*\n\nStellt alle Helden auf das Feld **57.**\n\n***\n**Aufgabe:**\nDie Helden müssen die Burg verteidigen und den **die Dunkelheit** daran hindern, alle Bauern zu verschlingen bevor der Erzähler den Buchstaben **Feld H** erreicht hat.\n***\n > :D1:\n\n> :DN6:\n\n:D1: :D2: :D3: :D4: :D5: :D6:\n\n:DN6: :DN8: :DN10: :DN12:\n\n:2P: 2 joueurs   :3P: 3 joueurs   :4P: 4 joueurs',
         id: 1
       },
       {
@@ -237,7 +237,11 @@ export default new Vuex.Store({
       state.series = newState.series || null;
       state.number = newState.number || null;
       state.newCardOpenIndex = newState.newCardOpenIndex || 1;
-      state.cards = newState.cards;
+      if(!Array.isArray(newState.cards)) {
+        state.cards = [];  
+      } else {
+        state.cards = newState.cards;
+      }
 
       //console.log("Board = " + state.difficulty);
 
